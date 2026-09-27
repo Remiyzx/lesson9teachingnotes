@@ -132,7 +132,7 @@
         .vocab-table th { background-color: var(--light-orange); color: var(--primary-color); font-size: 0.95rem; text-transform: uppercase; }
         .vocab-num { font-weight: bold; color: var(--accent-color); width: 8%; }
         
-        .vocab-pinyin, .vocab-collo, .vocab-sent, .dlg-py, .qa-q, .qa-a, .correct-example, .error-example, .dlg-turn, .dlg-turn-ans, .zodiac-pinyin {
+        .vocab-pinyin, .vocab-collo, .vocab-sent, .dlg-py, .qa-q, .qa-a, .correct-example, .error-example, .dlg-turn, .dlg-turn-ans, .zodiac-pinyin, .sent-py {
             font-family: var(--pinyin-font) !important;
         }
 
@@ -140,6 +140,39 @@
         .vocab-collo { color: var(--text-sub); margin-bottom: 4px; font-size: 1.1rem; }
         .collo-target { font-weight: bold; color: var(--primary-color); }
         .vocab-sent { color: var(--primary-color); font-weight: 500; font-size: 1.15rem; }
+
+        /* TIME MATRIX VISUAL TABLE STYLING */
+        .time-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            background: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1.5px solid var(--border-color);
+        }
+        .time-matrix-table th {
+            background-color: #FFEDD5;
+            color: #9A3412;
+            padding: 1rem 0.8rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.05rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .time-matrix-table td {
+            padding: 0.9rem 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+            text-align: center;
+        }
+        .matrix-unit {
+            font-weight: bold;
+            color: var(--primary-color);
+            background-color: var(--light-orange);
+            width: 18%;
+        }
 
         /* FULL-WIDTH PINYIN BOX FOR GRAMMAR EXAMPLES */
         .pinyin-box {
@@ -228,9 +261,46 @@
         
         .interactive-dlg.revealed .dlg-py { display: block; animation: fadeIn 0.3s ease-in-out; }
         .interactive-dlg.revealed .dlg-eng { color: #94A3B8; } 
+
+        /* INTERACTIVE KEY SENTENCE CARDS (SHOW PINYIN, CLICK FOR ENGLISH) */
+        .interactive-sentence {
+            background-color: #FFFFFF;
+            border-left: 6px solid var(--primary-color);
+            padding: 1rem 1.4rem;
+            margin-bottom: 0.9rem;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(194, 65, 12, 0.04);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .interactive-sentence:hover {
+            background-color: #FFF7ED;
+            transform: translateX(4px);
+        }
+        .sent-py {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-family: var(--pinyin-font) !important;
+        }
+        .sent-eng {
+            display: none;
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            margin-top: 0.6rem;
+            padding-top: 0.6rem;
+            border-top: 1px dashed var(--border-color);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .interactive-sentence.revealed .sent-eng {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
         
         .speaker { font-weight: bold; color: var(--primary-color); }
-        
         .dlg-turn { padding: 0.7rem 1rem; margin-bottom: 0.5rem; background-color: #FFF7ED; border-left: 4px solid var(--primary-color); border-radius: 0 6px 6px 0; font-size: 1.15rem; }
         
         .line-guide-box { background-color: #FFEDD5; border-left: 8px solid var(--accent-color); padding: 1.4rem 1.8rem; border-radius: 10px; margin-top: 1.8rem; margin-bottom: 1rem; }
@@ -460,23 +530,67 @@
                     </div>
                 </div>
 
+                <!-- VISUAL TIME MATRIX TABLE (REF: CANVA SLIDES 7 & 8) -->
                 <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Usage Rules for "<span class="grammar-hl">shàng</span>" & "<span class="grammar-hl">xià</span>":</strong>
-                    <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
-                        <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
-                            <strong style="color: var(--correct-green);">✔ Valid with: Week / Month / Part of Day</strong>
-                            <br>• <span class="vocab-pinyin" style="width: auto;">shàngwǔ</span> (morning) / <span class="vocab-pinyin" style="width: auto;">xiàwǔ</span> (afternoon)
-                            <br>• <span class="vocab-pinyin" style="width: auto;">shàng xīngqī</span> (last week) / <span class="vocab-pinyin" style="width: auto;">xià xīngqī</span> (next week)
-                            <br>• <span class="vocab-pinyin" style="width: auto;">shàng ge yuè</span> (last month) / <span class="vocab-pinyin" style="width: auto;">xià ge yuè</span> (next month)
-                        </div>
-                        <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
-                            <strong style="color: var(--error-red);">✘ NEVER use with: Year / Day</strong>
-                            <br>• <span class="error-example">shàng nián</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">qùnián</span> (last year)
-                            <br>• <span class="error-example">xià nián</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">míngnián</span> (next year)
-                            <br>• <span class="error-example">shàng tiān</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">zuótiān</span> (yesterday)
-                            <br>• <span class="error-example">xià tiān</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">míngnián</span> (tomorrow)
-                        </div>
-                    </div>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Usage Matrix for "<span class="grammar-hl">shàng</span>" & "<span class="grammar-hl">xià</span>" in Time Expressions:</strong>
+                    <p style="margin-top: 6px; color: var(--text-sub);">
+                        Concept by Time Sequence: Past/Previous ➔ Present ➔ Future/Next.
+                    </p>
+
+                    <table class="time-matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Time Unit</th>
+                                <th>Previous / Before (<span class="vocab-pinyin" style="font-size:1rem;">shàng</span>)</th>
+                                <th>Present / Now</th>
+                                <th>Next / After (<span class="vocab-pinyin" style="font-size:1rem;">xià</span>)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="matrix-unit">Year (nián)</td>
+                                <td>
+                                    <span class="error-example">✘ shàng nián</span>
+                                    <br><span class="vocab-pinyin" style="font-size:1.05rem;">➔ qùnián</span> <span class="translation">(last year)</span>
+                                </td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">jīnnián</span> <span class="translation">(this year)</span></td>
+                                <td>
+                                    <span class="error-example">✘ xià nián</span>
+                                    <br><span class="vocab-pinyin" style="font-size:1.05rem;">➔ míngnián</span> <span class="translation">(next year)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-unit">Month (yuè)</td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">shàng ge yuè</span> <span class="translation">(last month)</span></td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">zhè ge yuè</span> <span class="translation">(this month)</span></td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">xià ge yuè</span> <span class="translation">(next month)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-unit">Week (xīngqī)</td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">shàng xīngqī</span> <span class="translation">(last week)</span></td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">zhè xīngqī</span> <span class="translation">(this week)</span></td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">xià xīngqī</span> <span class="translation">(next week)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-unit">Day (tiān)</td>
+                                <td>
+                                    <span class="error-example">✘ shàng tiān</span>
+                                    <br><span class="vocab-pinyin" style="font-size:1.05rem;">➔ zuótiān</span> <span class="translation">(yesterday)</span>
+                                </td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">jīntiān</span> <span class="translation">(today)</span></td>
+                                <td>
+                                    <span class="error-example">✘ xià tiān</span>
+                                    <br><span class="vocab-pinyin" style="font-size:1.05rem;">➔ míngtiān</span> <span class="translation">(tomorrow)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-unit">Time of Day</td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">shàngwǔ</span> <span class="translation">(morning)</span></td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">xiànzài</span> <span class="translation">(now)</span></td>
+                                <td><span class="vocab-pinyin" style="font-size:1.05rem;">xiàwǔ</span> <span class="translation">(afternoon)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -1213,44 +1327,45 @@
                     <span class="page-badge">Pg 137</span>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">1. Míngtiān shàngwǔ nǐ yǒu méiyǒu kè?</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(Do you have class tomorrow morning?)</div>
+                <!-- KEY SENTENCES WITH CLICK-TO-REVEAL ENGLISH TRANSLATION -->
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">1. Míngtiān shàngwǔ nǐ yǒu méiyǒu kè?</div>
+                    <div class="sent-eng">(Do you have class tomorrow morning?)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">2. Xīngqīrì shì jǐ hào?</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(What date is Sunday?)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">2. Xīngqīrì shì jǐ hào?</div>
+                    <div class="sent-eng">(What date is Sunday?)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">3. Tā jīnnián duō dà?</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(How old is he this year?)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">3. Tā jīnnián duō dà?</div>
+                    <div class="sent-eng">(How old is he this year?)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">4. Tā yī jiǔ bā èr nián shíyuè èrshíqī rì chūshēng.</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(He was born on October 27, 1982.)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">4. Tā yī jiǔ bā èr nián shíyuè èrshíqī rì chūshēng.</div>
+                    <div class="sent-eng">(He was born on October 27, 1982.)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">5. Tā jīnnián èrshí suì.</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(He is twenty years old this year.)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">5. Tā jīnnián èrshí suì.</div>
+                    <div class="sent-eng">(He is twenty years old this year.)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">6. Wǒ mǎi yí ge dà dàngāo, hǎo ma?</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(I buy a big cake, okay?)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">6. Wǒ mǎi yí ge dà dàngāo, hǎo ma?</div>
+                    <div class="sent-eng">(I buy a big cake, okay?)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">7. Zhù nǐ shēngri kuàilè!</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(Wish you a happy birthday!)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">7. Zhù nǐ shēngri kuàilè!</div>
+                    <div class="sent-eng">(Wish you a happy birthday!)</div>
                 </div>
 
-                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
-                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">8. Wǒ hěn xǐhuan chī kǎoyā.</div>
-                    <div class="dlg-eng" style="margin-top:8px;">(I love to eat roast duck.)</div>
+                <div class="interactive-sentence" onclick="this.classList.toggle('revealed')">
+                    <div class="sent-py">8. Wǒ hěn xǐhuan chī kǎoyā.</div>
+                    <div class="sent-eng">(I love to eat roast duck.)</div>
                 </div>
             </div>
 
@@ -1273,7 +1388,7 @@
                         <li>Nǐ shǔ shénme? <span class="translation">(What is your zodiac animal?)</span></li>
                         <li>Nǐ shì nǎr rén? <span class="translation">(Where are you from?)</span></li>
                     </ul>
-                    <a href="https://padlet.com/zixianyzx/what-year-were-you-born-how-old-are-you-this-year-what-is-yo-h72l9dc9uenf885j" target="_blank" class="padlet-btn">🔗 Padlet Task 1 Submission Link</a>
+                    <a href="https://padlet.com/zixianyzx/what-year-were-you-born-how-old-are-you-this-year-what-is-yo-h72l9dc9uenf885j" target="_blank" class="padlet-btn">🔗 Padlet Task 1</a>
                 </div>
 
                 <div class="rule-box" style="background-color: #FFF7ED;">
@@ -1283,7 +1398,7 @@
                         <li>Nǐ guò shēngri de shíhou chī dàngāo ma? <span class="translation">(Do you eat cake when celebrating your birthday?)</span></li>
                         <li>Nǐ xǐhuan chī shénme dàngāo? <span class="translation">(What cake do you like?)</span></li>
                     </ul>
-                    <a href="https://padlet.com/zixianyzx1/when-is-your-birthday-what-cake-do-you-like-on-your-birthday-fzmw1rttbnz9s5d8" target="_blank" class="padlet-btn">🔗 Padlet Task 2 Submission Link</a>
+                    <a href="https://padlet.com/zixianyzx1/when-is-your-birthday-what-cake-do-you-like-on-your-birthday-fzmw1rttbnz9s5d8" target="_blank" class="padlet-btn">🔗 Padlet Task 2</a>
                 </div>
             </div>
         </section>
