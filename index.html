@@ -10,18 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #FFF5F7;         /* Gentle blush pink background */
-            --primary-color: #BE185D;    /* Deep rose pink for header & primary elements */
-            --primary-hover: #9D174D;    /* Darker rose pink for hover */
-            --accent-color: #EC4899;     /* Bright festive pink for accents */
+            --bg-color: #FFFBEB;         /* Warm ivory-cream background */
+            --primary-color: #C2410C;    /* Rich burnt terracotta orange */
+            --primary-hover: #9A3412;    /* Dark burnt orange for hover */
+            --accent-color: #F97316;     /* Vibrant warm orange for badges/highlights */
+            --sub-accent: #D97706;        /* Deep amber orange */
             --card-bg: #FFFFFF;          /* Crisp white cards */
-            --border-color: #FBCFE8;     /* Soft pastel pink border */
+            --border-color: #FED7AA;     /* Soft peach/apricot border */
             --text-main: #1E293B;        /* Dark slate for high contrast readability */
             --text-sub: #64748B;         /* Subdued slate text */
             --answer-blue: #2563EB;      
             --correct-green: #15803D;    
             --error-red: #B91C1C;        
-            --light-pink: #FDF2F8;       /* Table header & highlight fill */
+            --light-orange: #FFF7ED;     /* Card fill & soft highlight */
             
             /* STANDARD PINYIN FONT STACK */
             --pinyin-font: 'Andika', 'Century Gothic', 'Comic Sans MS', sans-serif;
@@ -48,7 +49,7 @@
             top: 0;
             z-index: 1000;
             background-color: var(--primary-color);
-            box-shadow: 0 4px 10px rgba(190, 24, 93, 0.2);
+            box-shadow: 0 4px 12px rgba(194, 65, 12, 0.25);
             display: flex;
             flex-direction: column;
         }
@@ -63,7 +64,7 @@
         }
         
         .nav-header h1 { font-size: 1.3rem; margin: 0; font-family: var(--pinyin-font); }
-        .nav-header p { font-size: 0.95rem; color: #FCE7F3; margin: 0; }
+        .nav-header p { font-size: 0.95rem; color: #FFEDD5; margin: 0; }
         
         .nav-tabs {
             display: flex;
@@ -76,7 +77,7 @@
         .nav-tabs button {
             background: rgba(255,255,255,0.18);
             border: 1px solid rgba(255,255,255,0.3);
-            color: #FCE7F3;
+            color: #FFEDD5;
             padding: 0.4rem 0.75rem;
             font-size: 0.82rem;
             font-weight: 500;
@@ -120,18 +121,18 @@
         .content-header h2 { color: var(--primary-color); font-size: 2.1rem; }
 
         /* CARDS & LARGE TEXT */
-        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.08); margin-bottom: 1.8rem; padding: 2rem; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 4px 8px -1px rgba(249, 115, 22, 0.08); margin-bottom: 1.8rem; padding: 2rem; }
         .card-title { font-size: 1.4rem; font-weight: bold; color: var(--primary-color); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px dashed var(--border-color); display: flex; align-items: center; justify-content: space-between; }
-        .page-badge { background-color: #FCE7F3; color: #9D174D; font-size: 0.85rem; padding: 3px 10px; border-radius: 12px; font-weight: bold; }
+        .page-badge { background-color: #FFEDD5; color: #9A3412; font-size: 0.85rem; padding: 3px 10px; border-radius: 12px; font-weight: bold; }
         .translation { display: inline; font-size: 1.05rem; color: var(--text-sub); font-weight: normal; margin-left: 8px; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
         /* TABLES & HIGHLIGHTS WITH STANDARD PINYIN FONT */
         .vocab-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; font-size: 1.1rem; }
         .vocab-table th, .vocab-table td { text-align: left; padding: 0.9rem 0.8rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
-        .vocab-table th { background-color: var(--light-pink); color: var(--primary-color); font-size: 0.95rem; text-transform: uppercase; }
+        .vocab-table th { background-color: var(--light-orange); color: var(--primary-color); font-size: 0.95rem; text-transform: uppercase; }
         .vocab-num { font-weight: bold; color: var(--accent-color); width: 8%; }
         
-        .vocab-pinyin, .vocab-collo, .vocab-sent, .dlg-py, .qa-q, .qa-a, .correct-example, .error-example, .dlg-turn, .dlg-turn-ans {
+        .vocab-pinyin, .vocab-collo, .vocab-sent, .dlg-py, .qa-q, .qa-a, .correct-example, .error-example, .dlg-turn, .dlg-turn-ans, .zodiac-pinyin {
             font-family: var(--pinyin-font) !important;
         }
 
@@ -140,7 +141,7 @@
         .collo-target { font-weight: bold; color: var(--primary-color); }
         .vocab-sent { color: var(--primary-color); font-weight: 500; font-size: 1.15rem; }
 
-        /* FULL-WIDTH PINYIN BOX FOR GRAMMAR EXAMPLES (PREVENTS SQUISHING) */
+        /* FULL-WIDTH PINYIN BOX FOR GRAMMAR EXAMPLES */
         .pinyin-box {
             font-family: var(--pinyin-font) !important;
             font-size: 1.15rem;
@@ -154,11 +155,11 @@
         }
 
         /* NEW VOCAB HIGHLIGHT IN TEXTS */
-        .hl { font-weight: bold; color: #BE185D; background-color: #FCE7F3; padding: 2px 5px; border-radius: 4px; border-bottom: 2px solid #FBCFE8; }
+        .hl { font-weight: bold; color: #C2410C; background-color: #FFEDD5; padding: 2px 5px; border-radius: 4px; border-bottom: 2px solid #FED7AA; }
 
         /* RULES & VISUAL GRAMMAR SLOTS */
-        .rule-box { background-color: var(--light-pink); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 1.4rem; margin-top: 1rem; font-size: 1.1rem; }
-        .grammar-hl { color: var(--primary-color); font-weight: bold; background-color: #FCE7F3; padding: 2px 6px; border-radius: 4px; }
+        .rule-box { background-color: var(--light-orange); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 1.4rem; margin-top: 1rem; font-size: 1.1rem; }
+        .grammar-hl { color: var(--primary-color); font-weight: bold; background-color: #FFEDD5; padding: 2px 6px; border-radius: 4px; }
         .correct-example { color: var(--correct-green); font-weight: bold; font-size: 1.2rem; }
         .error-example { color: var(--error-red); font-weight: bold; text-decoration: line-through; font-size: 1.2rem; }
         
@@ -179,15 +180,15 @@
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.04);
         }
-        .slot-subj { background-color: #FCE7F3; color: #9D174D; border: 1.5px solid #FBCFE8; }
-        .slot-time { background-color: #FEE2E2; color: #991B1B; border: 1.5px solid #FCA5A5; }
+        .slot-subj { background-color: #E2E8F0; color: #1E293B; border: 1.5px solid #CBD5E1; }
+        .slot-time { background-color: #FFEDD5; color: #9A3412; border: 1.5px solid #FDBA74; }
         .slot-prep { background-color: #FEF3C7; color: #92400E; border: 1.5px solid #FCD34D; }
-        .slot-verb { background-color: #FED7AA; color: #9A3412; border: 1.5px solid #FDBA74; }
+        .slot-verb { background-color: #FED7AA; color: #9A3412; border: 1.5px solid #F97316; }
         .slot-obj  { background-color: #DCFCE7; color: #15803D; border: 1.5px solid #86EFAC; }
         .slot-label { font-size: 0.72rem; display: block; font-weight: normal; color: #64748B; margin-bottom: 2px; text-transform: uppercase; }
 
-        /* INTERACTIVE CLICK-TO-REVEAL DIALOGUES WITH PINYIN FONT */
-        .click-hint { background-color: #FCE7F3; color: #9D174D; padding: 0.8rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; border-left: 6px solid var(--accent-color); }
+        /* INTERACTIVE CLICK-TO-REVEAL DIALOGUES & SENTENCES */
+        .click-hint { background-color: #FFEDD5; color: #9A3412; padding: 0.8rem 1.2rem; border-radius: 8px; margin-bottom: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 8px; font-size: 1.1rem; border-left: 6px solid var(--accent-color); }
         
         .interactive-dlg {
             background-color: #FFFFFF;
@@ -197,20 +198,20 @@
             border-radius: 0 8px 8px 0;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(190,24,93,0.04);
+            box-shadow: 0 2px 5px rgba(194, 65, 12, 0.05);
             border-top: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
         
         .interactive-dlg:hover {
-            background-color: #FFF5F7;
+            background-color: #FFF7ED;
             transform: translateX(4px);
         }
         
         .dlg-eng {
-            font-size: 1.1rem; /* ENLARGED BY ONE LEVEL */
-            color: #000000; /* Strictly black initially */
+            font-size: 1.1rem; 
+            color: #000000; 
             font-weight: 500;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             transition: color 0.2s ease;
@@ -221,28 +222,54 @@
             font-size: 1.35rem;
             margin-top: 0.8rem;
             padding-top: 0.8rem;
-            border-top: 1px dashed #FBCFE8;
+            border-top: 1px dashed #FED7AA;
             line-height: 1.6;
         }
         
         .interactive-dlg.revealed .dlg-py { display: block; animation: fadeIn 0.3s ease-in-out; }
-        .interactive-dlg.revealed .dlg-eng { color: #94A3B8; } /* Turns grey after opening */
+        .interactive-dlg.revealed .dlg-eng { color: #94A3B8; } 
         
         .speaker { font-weight: bold; color: var(--primary-color); }
         
-        .dlg-turn { padding: 0.7rem 1rem; margin-bottom: 0.5rem; background-color: #FFF5F7; border-left: 4px solid var(--primary-color); border-radius: 0 6px 6px 0; font-size: 1.15rem; }
+        .dlg-turn { padding: 0.7rem 1rem; margin-bottom: 0.5rem; background-color: #FFF7ED; border-left: 4px solid var(--primary-color); border-radius: 0 6px 6px 0; font-size: 1.15rem; }
         
-        .line-guide-box { background-color: #FCE7F3; border-left: 8px solid var(--accent-color); padding: 1.4rem 1.8rem; border-radius: 10px; margin-top: 1.8rem; margin-bottom: 1rem; }
-        .line-guide-title { font-weight: bold; color: #9D174D; font-size: 1.25rem; margin-bottom: 8px; }
-        .line-guide-text { color: #831843; font-size: 1.1rem; line-height: 1.6; }
+        .line-guide-box { background-color: #FFEDD5; border-left: 8px solid var(--accent-color); padding: 1.4rem 1.8rem; border-radius: 10px; margin-top: 1.8rem; margin-bottom: 1rem; }
+        .line-guide-title { font-weight: bold; color: #9A3412; font-size: 1.25rem; margin-bottom: 8px; }
+        .line-guide-text { color: #7C2D12; font-size: 1.1rem; line-height: 1.6; }
 
         .break-card { background-color: var(--primary-color); color: white; text-align: center; padding: 4rem 2rem; border-radius: 16px; border-top: 8px solid var(--accent-color); margin-top: 2rem;}
         .break-card h2 { font-size: 3rem; margin-bottom: 1.2rem; }
-        .break-card p { font-size: 1.4rem; color: #FCE7F3; }
+        .break-card p { font-size: 1.4rem; color: #FFEDD5; }
 
         .qa-q { font-weight: bold; color: var(--primary-color); font-size: 1.2rem; margin-bottom: 4px; }
         .qa-a { font-weight: 500; color: var(--correct-green); font-size: 1.2rem; margin-bottom: 16px; }
 
+        /* ZODIAC GRID STYLING */
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 1.2rem;
+        }
+        .zodiac-card {
+            background: #FFFFFF;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(194, 65, 12, 0.06);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .zodiac-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+        .zodiac-icon { font-size: 2.8rem; margin-bottom: 6px; }
+        .zodiac-pinyin { font-size: 1.25rem; font-weight: bold; color: var(--primary-color); }
+        .zodiac-english { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 8px; font-weight: bold; }
+        .zodiac-years { font-size: 0.92rem; color: #9A3412; background-color: #FFEDD5; padding: 6px 10px; border-radius: 6px; font-weight: 500; line-height: 1.5; }
+
+        /* PADLET BUTTON */
         .padlet-btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -263,6 +290,7 @@
             .nav-header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 1rem; }
             .main-content { padding: 1.5rem; }
             .sentence-builder { flex-direction: column; align-items: stretch; }
+            .zodiac-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -276,18 +304,19 @@
         </div>
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="openTab(event, 'nav-0')">📌 Agenda</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-1')">🗓️ Time, Days, Weeks & Months</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-2')">🎂 Age, Origin & Zodiac</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-3')">💬 Text 1</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-1')">🗓️ Schedule & Appointments</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-2')">🎂 Dates, Age & Origin</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-3')">🎁 Customs & Proposals</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-4')">💬 Text 1</button>
             
             <!-- FLEX BREAK TO FORCE EXACT TWO-ROW MENU STRUCTURE -->
             <div class="tab-break-line"></div>
             
             <button class="tab-btn" onclick="openTab(event, 'tab-break')">☕ Break</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-5')">🎉 Party & Invitations</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-6')">🍷 Food, Drinks & Celebrations</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-7')">💬 Text 2</button>
-            <button class="tab-btn" onclick="openTab(event, 'nav-8')">📝 Wrap-up & Homework</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-6')">🎉 Birthday Wishes & Feelings</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-7')">🦆 Feast & Future Actions</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-8')">💬 Text 2</button>
+            <button class="tab-btn" onclick="openTab(event, 'nav-9')">📝 Wrap-up & Homework</button>
         </div>
     </header>
 
@@ -301,15 +330,15 @@
             
             <div class="card">
                 <div class="card-title">Course Roadmap & Textbook Coverage</div>
-                <div class="dlg-turn"><strong>Main Topics:</strong> Expressing Time, Dates (Days, Weeks, Months, Years), Asking about Age and Birthplace, Celebrating Birthdays, and Chinese Zodiac.</div>
+                <div class="dlg-turn"><strong>Main Topics:</strong> Expressing Time, Schedules, Dates, Age, Birthplace, 12 Chinese Zodiac Animals, Birthday Customs, and Party Celebrations.</div>
                 <div class="dlg-turn"><strong>Textbook Coverage:</strong> New Practical Chinese Reader 1, Lesson 9 (Pages 129 to 150)</div>
             </div>
 
             <div class="card">
-                <div class="card-title">Lesson Modules</div>
-                <div class="dlg-turn"><strong>1. Section 1:</strong> Time, Days, Weeks, Months, Age, Origin & Zodiac - Text 1</div>
-                <div class="dlg-turn"><strong>2. Section 2:</strong> Party Planning, Food, Drinks & Celebrations - Text 2</div>
-                <div class="dlg-turn"><strong>3. Wrap-up:</strong> Key Sentence Review & Homework Assignment</div>
+                <div class="card-title">Lesson Modules Structure</div>
+                <div class="dlg-turn"><strong>1. Section 1 (Text 1 Prep):</strong> Schedule & Appointments ➔ Dates, Age & Origin ➔ Birthday Customs & Proposals ➔ <strong>Text 1</strong></div>
+                <div class="dlg-turn"><strong>2. Section 2 (Text 2 Prep):</strong> Birthday Wishes & Feelings ➔ Birthday Feast & Future Actions ➔ <strong>Text 2</strong></div>
+                <div class="dlg-turn"><strong>3. Wrap-up:</strong> Key Sentence Review & Speaking Assignments</div>
             </div>
 
             <div class="line-guide-box">
@@ -322,14 +351,14 @@
             </div>
         </section>
 
-        <!-- TIME, DAYS, WEEKS & MONTHS -->
+        <!-- MODULE 1: SCHEDULE & APPOINTMENTS (TEXT 1 PREP) -->
         <section id="nav-1" class="tab-content">
             <div class="content-header">
-                <h2>Time, Days, Weeks & Months (Pg 131–132, 141–143)</h2>
+                <h2>Schedule & Appointments (Text 1 Prep: Pg 130-131)</h2>
             </div>
 
             <div class="card">
-                <div class="card-title">Vocabulary: Time Words & Expressions (Pg 131–132)</div>
+                <div class="card-title">Vocabulary: Schedule Words (Pg 131–132)</div>
                 <table class="vocab-table">
                     <thead><tr><th>#</th><th>Pinyin</th><th>Meaning</th><th>Collocation & Example Sentence</th></tr></thead>
                     <tbody>
@@ -338,6 +367,13 @@
                             <td>
                                 <div class="vocab-collo">Collocation: <span class="collo-target">jīnnián</span> duō dà / <span class="collo-target">jīnnián</span> èrshí suì</div>
                                 <div class="vocab-sent">Sentence: Tā jīnnián èrshí suì.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#3</td><td class="vocab-pinyin">zěnmeyàng 🤷</td><td>how is...</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: nǐ <span class="collo-target">zěnmeyàng</span> / tiānqì <span class="collo-target">zěnmeyàng</span></div>
+                                <div class="vocab-sent">Sentence: Lín Nà, nǐ zěnmeyàng?</div>
                             </td>
                         </tr>
                         <tr>
@@ -375,27 +411,13 @@
                                 <div class="vocab-sent">Sentence: Wǒ xiàwǔ méiyǒu kè.</div>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="vocab-num">#9</td><td class="vocab-pinyin">xīngqīrì ⛪</td><td>Sunday</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">xīngqīrì</span> shàngwǔ / <span class="collo-target">xīngqīrì</span> xiàwǔ</div>
-                                <div class="vocab-sent">Sentence: Nǐ xīngqīrì yǒu shíjiān ma?</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#10</td><td class="vocab-pinyin">hào 📆</td><td>day of the month</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: jǐ <span class="collo-target">hào</span> / shíyuè èrshíqī <span class="collo-target">hào</span></div>
-                                <div class="vocab-sent">Sentence: Xīngqīrì shì jǐ hào?</div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- VISUAL GRAMMAR BUILDER -->
             <div class="card">
-                <div class="card-title">Grammar: Expressing Dates & Time Placement (Pg 141–143)</div>
+                <div class="card-title">Grammar: Time Word Placement & Expressions (Pg 142)</div>
                 
                 <div class="rule-box">
                     <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Time Words Placement Structure:</strong>
@@ -439,7 +461,240 @@
                 </div>
 
                 <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Expressing Dates: Big to Small Order (Pg 141–142)</strong>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Usage Rules for "<span class="grammar-hl">shàng</span>" & "<span class="grammar-hl">xià</span>":</strong>
+                    <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
+                        <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
+                            <strong style="color: var(--correct-green);">✔ Valid with: Week / Month / Part of Day</strong>
+                            <br>• <span class="vocab-pinyin" style="width: auto;">shàngwǔ</span> (morning) / <span class="vocab-pinyin" style="width: auto;">xiàwǔ</span> (afternoon)
+                            <br>• <span class="vocab-pinyin" style="width: auto;">shàng xīngqī</span> (last week) / <span class="vocab-pinyin" style="width: auto;">xià xīngqī</span> (next week)
+                            <br>• <span class="vocab-pinyin" style="width: auto;">shàng ge yuè</span> (last month) / <span class="vocab-pinyin" style="width: auto;">xià ge yuè</span> (next month)
+                        </div>
+                        <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
+                            <strong style="color: var(--error-red);">✘ NEVER use with: Year / Day</strong>
+                            <br>• <span class="error-example">shàng nián</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">qùnián</span> (last year)
+                            <br>• <span class="error-example">xià nián</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">míngnián</span> (next year)
+                            <br>• <span class="error-example">shàng tiān</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">zuótiān</span> (yesterday)
+                            <br>• <span class="error-example">xià tiān</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">míngnián</span> (tomorrow)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 2: DATES, AGE & ORIGIN (TEXT 1 PREP) -->
+        <section id="nav-2" class="tab-content">
+            <div class="content-header">
+                <h2>Dates, Age & Origin (Text 1 Prep: Pg 130-131, 141-143)</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Vocabulary: Personal Details & Dates (Pg 131–132)</div>
+                <table class="vocab-table">
+                    <thead><tr><th>#</th><th>Pinyin</th><th>Meaning</th><th>Collocation & Example Sentence</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="vocab-num">#2</td><td class="vocab-pinyin">suì 🎂</td><td>year (of age)</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: èrshí <span class="collo-target">suì</span> / jǐ <span class="collo-target">suì</span></div>
+                                <div class="vocab-sent">Sentence: Tā jīnnián èrshí suì.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#9</td><td class="vocab-pinyin">xīngqīrì ⛪</td><td>Sunday</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">xīngqīrì</span> shàngwǔ / <span class="collo-target">xīngqīrì</span> xiàwǔ</div>
+                                <div class="vocab-sent">Sentence: Nǐ xīngqīrì yǒu shíjiān ma?</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#10</td><td class="vocab-pinyin">hào 📆</td><td>day of the month</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: jǐ <span class="collo-target">hào</span> / shíyuè èrshíqī <span class="collo-target">hào</span></div>
+                                <div class="vocab-sent">Sentence: Xīngqīrì shì jǐ hào?</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#11</td><td class="vocab-pinyin">shēngri 🎁</td><td>birthday</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: Sòng Huá de <span class="collo-target">shēngri</span> / guò <span class="collo-target">shēngri</span></div>
+                                <div class="vocab-sent">Sentence: Xīngqīrì shì Sòng Huá de shēngri.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#12</td><td class="vocab-pinyin">duō dà ❓</td><td>how old</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: jīnnián <span class="collo-target">duō dà</span></div>
+                                <div class="vocab-sent">Sentence: Tā jīnnián duō dà?</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#13</td><td class="vocab-pinyin">chūshēng 👶</td><td>to be born</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">chūshēng</span> zài Běijīng / yī jiǔ bā èr nián <span class="collo-target">chūshēng</span></div>
+                                <div class="vocab-sent">Sentence: Sòng Huá yī jiǔ bā èr nián shíyuè èrshíqī rì chūshēng.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#14</td><td class="vocab-pinyin">shǔ 🐉</td><td>born in the year of (zodiac)</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">shǔ</span> gǒu / <span class="collo-target">shǔ</span> lóng</div>
+                                <div class="vocab-sent">Sentence: Tā chūshēng shǔ gǒu.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#15</td><td class="vocab-pinyin">jùhuì 🎉</td><td>party, get-together</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: shēngri <span class="collo-target">jùhuì</span> / yǒu yí ge <span class="collo-target">jùhuì</span></div>
+                                <div class="vocab-sent">Sentence: Xīngqīrì xiàwǔ wǒmen yǒu yí ge jùhuì.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#16</td><td class="vocab-pinyin">zhùhè 🎊</td><td>to congratulate</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">zhùhè</span> shēngri / <span class="collo-target">zhùhè</span> tā</div>
+                                <div class="vocab-sent">Sentence: Wǒmen zhùhè tā de shēngri.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#17</td><td class="vocab-pinyin">cānjiā 🙋</td><td>to participate, to attend</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">cānjiā</span> jùhuì / <span class="collo-target">cānjiā</span> bu <span class="collo-target">cānjiā</span></div>
+                                <div class="vocab-sent">Sentence: Wǒ dāngrán cānjiā.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#25</td><td class="vocab-pinyin">Sòng Huá 🧑</td><td>Song Hua (Name)</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">Sòng Huá</span> de shēngri</div>
+                                <div class="vocab-sent">Sentence: Shì Sòng Huá de shēngri.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#26</td><td class="vocab-pinyin">Běijīng 🇨🇳</td><td>Beijing</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">Běijīng</span> rén / zài <span class="collo-target">Běijīng</span></div>
+                                <div class="vocab-sent">Sentence: Tā shì Běijīng rén.</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 12 CHINESE ZODIAC ANIMALS SECTION -->
+            <div class="card">
+                <div class="card-title">
+                    <span>12 Chinese Zodiac Animals (shēngxiào / shǔ)</span>
+                    <span class="page-badge">Pg 134</span>
+                </div>
+                <p style="color: var(--text-sub); font-size: 1.05rem; margin-bottom: 1rem;">
+                    The Chinese Zodiac follows a 12-year cycle. Use the structure: <strong>Subject + shǔ + Animal</strong> (e.g., Wǒ shǔ gǒu).
+                </p>
+
+                <div class="zodiac-grid">
+                    <!-- 1. RAT -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐭</div>
+                        <div class="zodiac-pinyin">shǔ shǔ</div>
+                        <div class="zodiac-english">Rat</div>
+                        <div class="zodiac-years">1948, 1960, 1972,<br>1984, 1996, 2008, 2020</div>
+                    </div>
+
+                    <!-- 2. OX -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐂</div>
+                        <div class="zodiac-pinyin">shǔ niú</div>
+                        <div class="zodiac-english">Ox</div>
+                        <div class="zodiac-years">1949, 1961, 1973,<br>1985, 1997, 2009, 2021</div>
+                    </div>
+
+                    <!-- 3. TIGER -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐯</div>
+                        <div class="zodiac-pinyin">shǔ hǔ</div>
+                        <div class="zodiac-english">Tiger</div>
+                        <div class="zodiac-years">1950, 1962, 1974,<br>1986, 1998, 2010, 2022</div>
+                    </div>
+
+                    <!-- 4. RABBIT -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐰</div>
+                        <div class="zodiac-pinyin">shǔ tù</div>
+                        <div class="zodiac-english">Rabbit</div>
+                        <div class="zodiac-years">1951, 1963, 1975,<br>1987, 1999, 2011, 2023</div>
+                    </div>
+
+                    <!-- 5. DRAGON -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐲</div>
+                        <div class="zodiac-pinyin">shǔ lóng</div>
+                        <div class="zodiac-english">Dragon</div>
+                        <div class="zodiac-years">1952, 1964, 1976,<br>1988, 2000, 2012, 2024</div>
+                    </div>
+
+                    <!-- 6. SNAKE -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐍</div>
+                        <div class="zodiac-pinyin">shǔ shé</div>
+                        <div class="zodiac-english">Snake</div>
+                        <div class="zodiac-years">1953, 1965, 1977,<br>1989, 2001, 2013, 2025</div>
+                    </div>
+
+                    <!-- 7. HORSE -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐴</div>
+                        <div class="zodiac-pinyin">shǔ mǎ</div>
+                        <div class="zodiac-english">Horse</div>
+                        <div class="zodiac-years">1954, 1966, 1978,<br>1990, 2002, 2014, 2026</div>
+                    </div>
+
+                    <!-- 8. GOAT -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐐</div>
+                        <div class="zodiac-pinyin">shǔ yáng</div>
+                        <div class="zodiac-english">Goat</div>
+                        <div class="zodiac-years">1955, 1967, 1979,<br>1991, 2003, 2015, 2027</div>
+                    </div>
+
+                    <!-- 9. MONKEY -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐵</div>
+                        <div class="zodiac-pinyin">shǔ hóu</div>
+                        <div class="zodiac-english">Monkey</div>
+                        <div class="zodiac-years">1956, 1968, 1980,<br>1992, 2004, 2016, 2028</div>
+                    </div>
+
+                    <!-- 10. ROOSTER -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐔</div>
+                        <div class="zodiac-pinyin">shǔ jī</div>
+                        <div class="zodiac-english">Rooster</div>
+                        <div class="zodiac-years">1957, 1969, 1981,<br>1993, 2005, 2017, 2029</div>
+                    </div>
+
+                    <!-- 11. DOG -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐶</div>
+                        <div class="zodiac-pinyin">shǔ gǒu</div>
+                        <div class="zodiac-english">Dog</div>
+                        <div class="zodiac-years">1958, 1970, 1982,<br>1994, 2006, 2018, 2030</div>
+                    </div>
+
+                    <!-- 12. PIG -->
+                    <div class="zodiac-card">
+                        <div class="zodiac-icon">🐷</div>
+                        <div class="zodiac-pinyin">shǔ zhū</div>
+                        <div class="zodiac-english">Pig</div>
+                        <div class="zodiac-years">1959, 1971, 1983,<br>1995, 2007, 2019, 2031</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISUAL GRAMMAR BREAKDOWN -->
+            <div class="card">
+                <div class="card-title">Grammar: Dates Order, Nominal Predicate & Origin (Pg 141-143)</div>
+                
+                <div class="rule-box">
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Expressing Dates: Big to Small Order (Pg 141–142)</strong>
                     
                     <div class="sentence-builder" style="margin-top: 10px;">
                         <div class="slot slot-time"><span class="slot-label">Year</span>Year (nián)</div>
@@ -461,28 +716,38 @@
                 </div>
 
                 <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">3. Usage Rules for "<span class="grammar-hl">shàng</span>" & "<span class="grammar-hl">xià</span>"</strong>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Asking Age Rules & Nominal Predicate (Pg 133, 143):</strong>
                     <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
-                        <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
-                            <strong style="color: var(--correct-green);">✔ Valid with: Week / Month / Part of Day</strong>
-                            <br>• <span class="vocab-pinyin" style="width: auto;">shàngwǔ</span> (morning) / <span class="vocab-pinyin" style="width: auto;">xiàwǔ</span> (afternoon)
-                            <br>• <span class="vocab-pinyin" style="width: auto;">shàng xīngqī</span> (last week) / <span class="vocab-pinyin" style="width: auto;">xià xīngqī</span> (next week)
-                            <br>• <span class="vocab-pinyin" style="width: auto;">shàng ge yuè</span> (last month) / <span class="vocab-pinyin" style="width: auto;">xià ge yuè</span> (next month)
+                        <div style="background: white; padding: 12px; border-radius: 8px; border-left: 5px solid var(--correct-green); flex: 1;">
+                            <span style="font-weight: bold; color: var(--correct-green);">Adults & Peers:</span>
+                            <br><span class="vocab-pinyin" style="width: auto;">Nǐ jīnnián <span class="grammar-hl">duō dà</span>?</span>
                         </div>
-                        <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
-                            <strong style="color: var(--error-red);">✘ NEVER use with: Year / Day</strong>
-                            <br>• <span class="error-example">shàng nián</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">qùnián</span> (last year)
-                            <br>• <span class="error-example">xià nián</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">míngnián</span> (next year)
-                            <br>• <span class="error-example">shàng tiān</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">zuótiān</span> (yesterday)
-                            <br>• <span class="error-example">xià tiān</span> ➔ Use <span class="vocab-pinyin" style="width: auto;">míngnián</span> (tomorrow)
+                        <div style="background: white; padding: 12px; border-radius: 8px; border-left: 5px solid #BE185D; flex: 1;">
+                            <span style="font-weight: bold; color: #BE185D;">Children (Under 10):</span>
+                            <br><span class="vocab-pinyin" style="width: auto;">Nǐ jīnnián <span class="grammar-hl">jǐ suì</span>?</span>
+                        </div>
+                    </div>
+                    <div style="background: white; padding: 10px 15px; border-radius: 8px; margin-top: 10px;">
+                        <span class="correct-example">✔ Tā jīnnián èrshí suì. (Nominal predicate - NO "shì" needed!)</span>
+                        <br><span class="error-example">✘ Tā jīnnián shì èrshí suì.</span>
+                    </div>
+                </div>
+
+                <div class="rule-box" style="margin-top: 1rem;">
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">3. Asking Hometown vs Nationality & "cānjiā" Rules:</strong>
+                    <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
+                        <div class="pinyin-box">
+                            <strong>A. Asking Hometown / Place of Birth:</strong> <span class="grammar-hl">Tā shì nǎr rén?</span> ➔ Tā shì Běijīng rén.
+                            <br><strong>B. Asking Nationality:</strong> <span class="grammar-hl">Tā shì nǎ guó rén?</span> ➔ Tā shì Zhōngguó rén.
+                            <br><strong>C. "cānjiā" Constraints:</strong> <span class="correct-example">✔ cānjiā jùhuì</span> | <span class="error-example">✘ cānjiā Hànyǔ kè</span> (Use <span style="font-weight:bold;">shàng kè</span> instead).
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KEY Q&A REINFORCEMENT: ASKING DATES -->
+            <!-- KEY Q&A REINFORCEMENT: ASKING DATES & DETAILS -->
             <div class="card">
-                <div class="card-title">🎯 Key Q&A Reinforcement: Asking Dates</div>
+                <div class="card-title">🎯 Key Q&A Reinforcement: Asking Dates & Personal Details</div>
                 
                 <div style="margin-bottom: 12px;">
                     <div class="qa-q">Q1: Tā <span class="grammar-hl">nǎ nián</span> chūshēng? <span class="translation">(Which year was he born?)</span></div>
@@ -514,151 +779,118 @@
                     <div class="qa-a">A: Wǒ shàngwǔ jiǔ diǎn yǒu kè. <span class="translation">(I have class at 9 o'clock in the morning.)</span></div>
                 </div>
 
-                <div class="rule-box" style="margin-top: 1rem; background-color: #FEF3C7; border-color: #FCD34D;">
-                    <strong style="color: #92400E;">💡 Difference Note:</strong>
-                    <span style="color: #78350F; font-size: 1.05rem;">Use <strong>shénme shíhou</strong> for broad/general time (day, week, year). Use <strong>jǐ diǎn</strong> specifically for exact clock time (hours).</span>
+                <div style="margin-bottom: 12px;">
+                    <div class="qa-q">Q7: Tā jīnnián <span class="grammar-hl">duō dà</span>? <span class="translation">(How old is he this year? - Adults / General)</span></div>
+                    <div class="qa-a">A: Tā jīnnián èrshí suì. <span class="translation">(He is 20 years old this year.)</span></div>
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <div class="qa-q">Q8: Nǐ dìdi jīnnián <span class="grammar-hl">jǐ suì</span>? <span class="translation">(How old is your younger brother? - Children under 10)</span></div>
+                    <div class="qa-a">A: Tā jīnnián sān suì. <span class="translation">(He is 3 years old this year.)</span></div>
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <div class="qa-q">Q9: Tā shì <span class="grammar-hl">nǎr rén</span>? <span class="translation">(Where is he from?)</span></div>
+                    <div class="qa-a">A: Tā shì Běijīng rén. <span class="translation">(He is from Beijing.)</span></div>
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <div class="qa-q">Q10: Nǐ <span class="grammar-hl">shǔ shénme</span>? <span class="translation">(What is your zodiac sign?)</span></div>
+                    <div class="qa-a">A: Wǒ shǔ gǒu. <span class="translation">(I was born in the year of the Dog.)</span></div>
                 </div>
             </div>
         </section>
 
-        <!-- AGE, ORIGIN & ZODIAC -->
-        <section id="nav-2" class="tab-content">
+        <!-- MODULE 3: CUSTOMS & PROPOSALS (TEXT 1 PREP) -->
+        <section id="nav-3" class="tab-content">
             <div class="content-header">
-                <h2>Age, Origin & Zodiac (Pg 131–134, 143)</h2>
+                <h2>Customs & Proposals (Text 1 Prep: Pg 131-132)</h2>
             </div>
 
             <div class="card">
-                <div class="card-title">Vocabulary: Personal Details (Pg 131–132)</div>
+                <div class="card-title">Vocabulary: Birthday Items & Customs (Pg 131–132)</div>
                 <table class="vocab-table">
                     <thead><tr><th>#</th><th>Pinyin</th><th>Meaning</th><th>Collocation & Example Sentence</th></tr></thead>
                     <tbody>
                         <tr>
-                            <td class="vocab-num">#2</td><td class="vocab-pinyin">suì 🎂</td><td>year (of age)</td>
+                            <td class="vocab-num">#18</td><td class="vocab-pinyin">le</td><td>(modal/aspect particle)</td>
                             <td>
-                                <div class="vocab-collo">Collocation: èrshí <span class="collo-target">suì</span> / jǐ <span class="collo-target">suì</span></div>
-                                <div class="vocab-sent">Sentence: Tā jīnnián èrshí suì.</div>
+                                <div class="vocab-collo">Collocation: tài hǎo <span class="collo-target">le</span></div>
+                                <div class="vocab-sent">Sentence: Tài hǎo le!</div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="vocab-num">#12</td><td class="vocab-pinyin">duō dà ❓</td><td>how old</td>
+                            <td class="vocab-num">#19</td><td class="vocab-pinyin">guò 🥳</td><td>to spend time, celebrate</td>
                             <td>
-                                <div class="vocab-collo">Collocation: jīnnián <span class="collo-target">duō dà</span></div>
-                                <div class="vocab-sent">Sentence: Tā jīnnián duō dà?</div>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">guò</span> shēngri / <span class="collo-target">guò</span> xīngqīrì</div>
+                                <div class="vocab-sent">Sentence: Zhōngguó rén guò shēngri de shíhou chī dàngāo ma?</div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="vocab-num">#13</td><td class="vocab-pinyin">chūshēng 👶</td><td>to be born</td>
+                            <td class="vocab-num">#20</td><td class="vocab-pinyin">chī 🍽️</td><td>to eat</td>
                             <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">chūshēng</span> zài Běijīng / yī jiǔ bā èr nián <span class="collo-target">chūshēng</span></div>
-                                <div class="vocab-sent">Sentence: Sòng Huá yī jiǔ bā èr nián shíyuè èrshíqī rì chūshēng.</div>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">chī</span> dàngāo / <span class="collo-target">chī</span> kǎoyā</div>
+                                <div class="vocab-sent">Sentence: Chī dàngāo.</div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="vocab-num">#14</td><td class="vocab-pinyin">shǔ 🐉</td><td>born in the year of (zodiac)</td>
+                            <td class="vocab-num">#21</td><td class="vocab-pinyin">dàngāo 🍰</td><td>cake</td>
                             <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">shǔ</span> gǒu / <span class="collo-target">shǔ</span> lóng</div>
-                                <div class="vocab-sent">Sentence: Tā chūshēng shǔ gǒu.</div>
+                                <div class="vocab-collo">Collocation: shēngri <span class="collo-target">dàngāo</span> / yí ge dà <span class="collo-target">dàngāo</span></div>
+                                <div class="vocab-sent">Sentence: Wǒ mǎi yí ge dà dàngāo.</div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="vocab-num">#25</td><td class="vocab-pinyin">Sòng Huá 🧑</td><td>Song Hua (Name)</td>
+                            <td class="vocab-num">#22</td><td class="vocab-pinyin">mǎi 🛒</td><td>to buy</td>
                             <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">Sòng Huá</span> de shēngri</div>
-                                <div class="vocab-sent">Sentence: Shì Sòng Huá de shēngri.</div>
+                                <div class="vocab-collo">Collocation: <span class="collo-target">mǎi</span> dàngāo / <span class="collo-target">mǎi</span> liǎng píng jiǔ</div>
+                                <div class="vocab-sent">Sentence: Wǒ mǎi liǎng píng hóng pútaojiǔ.</div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="vocab-num">#26</td><td class="vocab-pinyin">Běijīng 🇨🇳</td><td>Beijing</td>
+                            <td class="vocab-num">#23</td><td class="vocab-pinyin">píng 🍾</td><td>bottle (measure word)</td>
                             <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">Běijīng</span> rén / zài <span class="collo-target">Běijīng</span></div>
-                                <div class="vocab-sent">Sentence: Tā shì Běijīng rén.</div>
+                                <div class="vocab-collo">Collocation: liǎng <span class="collo-target">píng</span> hóng pútaojiǔ / yì <span class="collo-target">píng</span> shuǐ</div>
+                                <div class="vocab-sent">Sentence: Wǒ mǎi liǎng píng hóng pútaojiǔ.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="vocab-num">#24</td><td class="vocab-pinyin">hóng pútaojiǔ 🍷</td><td>red wine</td>
+                            <td>
+                                <div class="vocab-collo">Collocation: hē <span class="collo-target">hóng pútaojiǔ</span> / liǎng píng <span class="collo-target">hóng pútaojiǔ</span></div>
+                                <div class="vocab-sent">Sentence: Wǒ mǎi liǎng píng hóng pútaojiǔ.</div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- VISUAL GRAMMAR BREAKDOWN -->
+            <!-- VISUAL GRAMMAR -->
             <div class="card">
-                <div class="card-title">Grammar & Culture Visual Notes (Pg 133, 143)</div>
+                <div class="card-title">Grammar: Time Clauses & Proposals (Pg 143)</div>
                 
                 <div class="rule-box">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Asking Age Rules (Pg 133):</strong>
-                    <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
-                        <div style="background: white; padding: 12px; border-radius: 8px; border-left: 5px solid var(--correct-green); flex: 1;">
-                            <span style="font-weight: bold; color: var(--correct-green);">Adults & Peers:</span>
-                            <br><span class="vocab-pinyin" style="width: auto;">Nǐ jīnnián <span class="grammar-hl">duō dà</span>?</span>
-                            <br><span style="font-size: 0.95rem; color: var(--text-sub);">Most natural way for adults.</span>
-                        </div>
-                        <div style="background: white; padding: 12px; border-radius: 8px; border-left: 5px solid #BE185D; flex: 1;">
-                            <span style="font-weight: bold; color: #BE185D;">Children (Under 10):</span>
-                            <br><span class="vocab-pinyin" style="width: auto;">Nǐ jīnnián <span class="grammar-hl">jǐ suì</span>?</span>
-                            <br><span style="font-size: 0.95rem; color: var(--text-sub);">Specifically for young kids.</span>
-                        </div>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Time Clause Structure: "<span class="grammar-hl">... de shíhou</span>" (When / While)</strong>
+                    <div class="pinyin-box">
+                        <div>• Zhōngguó rén <strong>guò shēngri de shíhou</strong> chī dàngāo ma? <span class="translation">(Do Chinese people eat cake when celebrating birthdays?)</span></div>
+                        <div>• <strong>Chīfàn de shíhou</strong>, wǒ bú kàn shū. <span class="translation">(When eating, I don't read books.)</span></div>
                     </div>
                 </div>
 
                 <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Sentences with Nominal Predicate (Pg 143):</strong>
-                    <p style="margin-top: 5px;">Numeral-measure phrases (like age) function directly as predicate. NO verb "<span class="vocab-pinyin" style="width: auto;">shì</span>" is needed!</p>
-                    <div style="background: white; padding: 10px 15px; border-radius: 8px; margin-top: 8px;">
-                        <span class="correct-example">✔ Tā jīnnián èrshí suì.</span>
-                        <br><span class="error-example">✘ Tā jīnnián shì èrshí suì. (Do NOT use shì!)</span>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Suggestion Structure: "<span class="grammar-hl">... hǎo ma?</span>" (Pg 143)</strong>
+                    <div style="background: white; padding: 12px; border-radius: 8px; margin-top: 10px;">
+                        <span class="vocab-pinyin" style="font-size: 1.15rem; width: auto;">Wǒ mǎi yí ge dà dàngāo, <strong>hǎo ma</strong>?</span>
+                        <br><br>
+                        <strong>Affirmative Answers:</strong> <span class="vocab-pinyin" style="color: var(--correct-green); width: auto;">Hǎo a. / Hǎo. / Tài hǎo le.</span>
+                        <br><strong>Polite Refusal:</strong> <span class="vocab-pinyin" style="color: var(--error-red); width: auto;">Bú yòng le. / Duìbuqǐ, wǒ méiyǒu shíjiān.</span>
                     </div>
-                </div>
-
-                <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">3. Asking Hometown vs Nationality:</strong>
-                    <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
-                        <div class="pinyin-box">
-                            <strong>A. Asking Hometown / Place of Birth:</strong>
-                            <br><span class="grammar-hl">Tā shì nǎr rén?</span> ➔ Tā shì Běijīng rén.
-                        </div>
-                        <div class="pinyin-box">
-                            <strong>B. Asking Nationality:</strong>
-                            <br><span class="grammar-hl">Tā shì nǎ guó rén?</span> ➔ Tā shì Zhōngguó rén.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rule-box" style="margin-top: 1rem; background-color: #FCE7F3; border-color: #FBCFE8;">
-                    <strong style="font-size: 1.15rem; color: #9D174D;">4. Culture Note: Chinese Zodiac "<span class="grammar-hl" style="background-color: #FBCFE8; color: #9D174D;">shǔ</span>" (Pg 134)</strong>
-                    <ul style="margin-top: 6px; margin-left: 20px; color: #831843;">
-                        <li>12-year animal cycle: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig.</li>
-                        <li>Grammar structure matches surname (<span class="vocab-pinyin" style="width: auto;">xìng</span>): Direct verb <span class="vocab-pinyin" style="width: auto;">shǔ</span> + Animal Noun (NO <span class="vocab-pinyin" style="width: auto;">shì</span> needed!).</li>
-                        <li>Example: <span class="vocab-pinyin" style="width: auto;">Sòng Huá shǔ gǒu.</span> / <span class="vocab-pinyin" style="width: auto;">Wǒ shǔ lóng.</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- KEY Q&A REINFORCEMENT: AGE, ORIGIN & ZODIAC -->
-            <div class="card">
-                <div class="card-title">🎯 Key Q&A Reinforcement: Asking Personal Details</div>
-                
-                <div style="margin-bottom: 12px;">
-                    <div class="qa-q">Q1: Tā jīnnián <span class="grammar-hl">duō dà</span>? <span class="translation">(How old is he this year? - Adults / General)</span></div>
-                    <div class="qa-a">A: Tā jīnnián èrshí suì. <span class="translation">(He is 20 years old this year.)</span></div>
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                    <div class="qa-q">Q2: Nǐ dìdi jīnnián <span class="grammar-hl">jǐ suì</span>? <span class="translation">(How old is your younger brother? - Children under 10)</span></div>
-                    <div class="qa-a">A: Tā jīnnián sān suì. <span class="translation">(He is 3 years old this year.)</span></div>
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                    <div class="qa-q">Q3: Tā shì <span class="grammar-hl">nǎr rén</span>? <span class="translation">(Where is he from?)</span></div>
-                    <div class="qa-a">A: Tā shì Běijīng rén. <span class="translation">(He is from Beijing.)</span></div>
-                </div>
-
-                <div style="margin-bottom: 12px;">
-                    <div class="qa-q">Q4: Nǐ <span class="grammar-hl">shǔ shénme</span>? <span class="translation">(What is your zodiac sign?)</span></div>
-                    <div class="qa-a">A: Wǒ shǔ gǒu. <span class="translation">(I was born in the year of the Dog.)</span></div>
                 </div>
             </div>
         </section>
 
         <!-- TEXT 1 -->
-        <section id="nav-3" class="tab-content">
+        <section id="nav-4" class="tab-content">
             <div class="content-header">
                 <h2>Text 1: Making an Appointment (Pg 130–131)</h2>
             </div>
@@ -764,70 +996,21 @@
             </div>
             <div class="break-card">
                 <h2>10 MINUTE BREAK</h2>
-                <p>Up next: Party Planning, Celebrating Birthdays & Text 2</p>
+                <p>Up next: Birthday Wishes, Feast & Text 2</p>
             </div>
         </section>
 
-        <!-- PARTY & INVITATIONS -->
-        <section id="nav-5" class="tab-content">
+        <!-- MODULE 4: BIRTHDAY WISHES & FEELINGS (TEXT 2 PREP) -->
+        <section id="nav-6" class="tab-content">
             <div class="content-header">
-                <h2>Party & Invitations (Pg 131–132, 135)</h2>
+                <h2>Birthday Wishes & Feelings (Text 2 Prep: Pg 134-135)</h2>
             </div>
 
             <div class="card">
-                <div class="card-title">Vocabulary: Birthday & Party Words (Pg 131–132, 135)</div>
+                <div class="card-title">Vocabulary: Wishes & Expressions (Pg 135)</div>
                 <table class="vocab-table">
                     <thead><tr><th>#</th><th>Pinyin</th><th>Meaning</th><th>Collocation & Example Sentence</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="vocab-num">#3</td><td class="vocab-pinyin">zěnmeyàng 🤷</td><td>how is...</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: nǐ <span class="collo-target">zěnmeyàng</span> / tiānqì <span class="collo-target">zěnmeyàng</span></div>
-                                <div class="vocab-sent">Sentence: Lín Nà, nǐ zěnmeyàng?</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#11</td><td class="vocab-pinyin">shēngri 🎁</td><td>birthday</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: Sòng Huá de <span class="collo-target">shēngri</span> / guò <span class="collo-target">shēngri</span></div>
-                                <div class="vocab-sent">Sentence: Xīngqīrì shì Sòng Huá de shēngri.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#15</td><td class="vocab-pinyin">jùhuì 🎉</td><td>party, get-together</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: shēngri <span class="collo-target">jùhuì</span> / yǒu yí ge <span class="collo-target">jùhuì</span></div>
-                                <div class="vocab-sent">Sentence: Xīngqīrì xiàwǔ wǒmen yǒu yí ge jùhuì.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#16</td><td class="vocab-pinyin">zhùhè 🎊</td><td>to congratulate</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">zhùhè</span> shēngri / <span class="collo-target">zhùhè</span> tā</div>
-                                <div class="vocab-sent">Sentence: Wǒmen zhùhè tā de shēngri.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#17</td><td class="vocab-pinyin">cānjiā 🙋</td><td>to participate, to attend</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">cānjiā</span> jùhuì / <span class="collo-target">cānjiā</span> bu <span class="collo-target">cānjiā</span></div>
-                                <div class="vocab-sent">Sentence: Wǒ dāngrán cānjiā.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#18</td><td class="vocab-pinyin">le</td><td>(modal/aspect particle)</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: tài hǎo <span class="collo-target">le</span></div>
-                                <div class="vocab-sent">Sentence: Tài hǎo le!</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#19</td><td class="vocab-pinyin">guò 🥳</td><td>to spend time, celebrate</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">guò</span> shēngri / <span class="collo-target">guò</span> xīngqīrì</div>
-                                <div class="vocab-sent">Sentence: Zhōngguó rén guò shēngri de shíhou chī dàngāo ma?</div>
-                            </td>
-                        </tr>
                         <tr>
                             <td class="vocab-num">T2#1</td><td class="vocab-pinyin">kuàilè 😊</td><td>happy</td>
                             <td>
@@ -848,18 +1031,10 @@
 
             <!-- VISUAL GRAMMAR -->
             <div class="card">
-                <div class="card-title">Grammar: Greetings & Participation Rules</div>
+                <div class="card-title">Grammar: Greetings & Emotional Expressions</div>
                 
                 <div class="rule-box">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Usage Rules for "<span class="grammar-hl">cānjiā</span>":</strong>
-                    <div style="background: white; padding: 12px; border-radius: 8px; margin-top: 10px;">
-                        <span class="correct-example">✔ cānjiā jùhuì</span> (Used for parties, events, activities)
-                        <br><span class="error-example">✘ cānjiā Hànyǔ kè</span> (NOT used for classes! Use <span class="vocab-pinyin" style="width: auto;">shàng kè</span> or <span class="vocab-pinyin" style="width: auto;">yǒu kè</span> instead.)
-                    </div>
-                </div>
-
-                <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. "<span class="grammar-hl">zhù</span>" vs "<span class="grammar-hl">zhùhè</span>":</strong>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. "<span class="grammar-hl">zhù</span>" vs "<span class="grammar-hl">zhùhè</span>":</strong>
                     <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
                         <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
                             <strong style="color: var(--primary-color);">zhù (Wish):</strong>
@@ -875,7 +1050,7 @@
                 </div>
 
                 <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">3. "<span class="grammar-hl">kuàilè</span>" vs "<span class="grammar-hl">gāoxìng</span>":</strong>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. "<span class="grammar-hl">kuàilè</span>" vs "<span class="grammar-hl">gāoxìng</span>":</strong>
                     <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap;">
                         <div style="background: white; padding: 12px; border-radius: 8px; flex: 1;">
                             <strong style="color: var(--primary-color);">kuàilè (Happy / Festive):</strong>
@@ -889,64 +1064,20 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">4. Time Clause Structure: "<span class="grammar-hl">... de shíhou</span>" (When / While)</strong>
-                    
-                    <div class="pinyin-box">
-                        <div>• Zhōngguó rén <strong>guò shēngri de shíhou</strong> chī dàngāo ma? <span class="translation" style="font-size: 0.95rem;">(Do Chinese people eat cake when celebrating birthdays?)</span></div>
-                        <div>• <strong>Chīfàn de shíhou</strong>, wǒ bú kàn shū. <span class="translation" style="font-size: 0.95rem;">(When eating, I don't read books.)</span></div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- FOOD, DRINKS & CELEBRATIONS -->
-        <section id="nav-6" class="tab-content">
+        <!-- MODULE 5: FEAST & FUTURE ACTIONS (TEXT 2 PREP) -->
+        <section id="nav-7" class="tab-content">
             <div class="content-header">
-                <h2>Food, Drinks & Celebrations (Pg 132, 135)</h2>
+                <h2>Feast & Future Actions (Text 2 Prep: Pg 134-135)</h2>
             </div>
 
             <div class="card">
-                <div class="card-title">Vocabulary: Food & Drinks (Pg 132, 135)</div>
+                <div class="card-title">Vocabulary: Feast & Actions (Pg 135)</div>
                 <table class="vocab-table">
                     <thead><tr><th>#</th><th>Pinyin</th><th>Meaning</th><th>Collocation & Example Sentence</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="vocab-num">#20</td><td class="vocab-pinyin">chī 🍽️</td><td>to eat</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">chī</span> dàngāo / <span class="collo-target">chī</span> kǎoyā / <span class="collo-target">chī</span> shòumiàn</div>
-                                <div class="vocab-sent">Sentence: Jīntiān wǒmen chī Běijīng kǎoyā.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#21</td><td class="vocab-pinyin">dàngāo 🍰</td><td>cake</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: shēngri <span class="collo-target">dàngāo</span> / yí ge dà <span class="collo-target">dàngāo</span></div>
-                                <div class="vocab-sent">Sentence: Wǒ mǎi yí ge dà dàngāo.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#22</td><td class="vocab-pinyin">mǎi 🛒</td><td>to buy</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: <span class="collo-target">mǎi</span> dàngāo / <span class="collo-target">mǎi</span> liǎng píng jiǔ</div>
-                                <div class="vocab-sent">Sentence: Wǒ mǎi liǎng píng hóng pútaojiǔ.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#23</td><td class="vocab-pinyin">píng 🍾</td><td>bottle (measure word)</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: liǎng <span class="collo-target">píng</span> hóng pútaojiǔ / yì <span class="collo-target">píng</span> shuǐ</div>
-                                <div class="vocab-sent">Sentence: Wǒ mǎi liǎng píng hóng pútaojiǔ.</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="vocab-num">#24</td><td class="vocab-pinyin">hóng pútaojiǔ 🍷</td><td>red wine</td>
-                            <td>
-                                <div class="vocab-collo">Collocation: hē <span class="collo-target">hóng pútaojiǔ</span> / liǎng píng <span class="collo-target">hóng pútaojiǔ</span></div>
-                                <div class="vocab-sent">Sentence: Dāngrán hē hóng pútaojiǔ.</div>
-                            </td>
-                        </tr>
                         <tr>
                             <td class="vocab-num">T2#3</td><td class="vocab-pinyin">kǎoyā 🦆</td><td>roast duck</td>
                             <td>
@@ -981,22 +1112,10 @@
 
             <!-- VISUAL GRAMMAR -->
             <div class="card">
-                <div class="card-title">Grammar: Suggestions & Action Repetition (Pg 143)</div>
+                <div class="card-title">Grammar: Adverb "zài" for Future Actions</div>
                 
                 <div class="rule-box">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Suggestion Structure: "<span class="grammar-hl">... hǎo ma?</span>" (Pg 143)</strong>
-                    <p style="margin-top: 5px;">Placed at the end of a statement to propose a suggestion or seek advice.</p>
-                    
-                    <div style="background: white; padding: 12px; border-radius: 8px; margin-top: 10px;">
-                        <span class="vocab-pinyin" style="font-size: 1.15rem; width: auto;">Wǒ mǎi yí ge dà dàngāo, <strong>hǎo ma</strong>?</span>
-                        <br><br>
-                        <strong>Affirmative Answers:</strong> <span class="vocab-pinyin" style="color: var(--correct-green); width: auto;">Hǎo a. / Hǎo. / Tài hǎo le.</span>
-                        <br><strong>Polite Refusal:</strong> <span class="vocab-pinyin" style="color: var(--error-red); width: auto;">Bú yòng le. / Duìbuqǐ, wǒ méiyǒu shíjiān.</span>
-                    </div>
-                </div>
-
-                <div class="rule-box" style="margin-top: 1rem;">
-                    <strong style="font-size: 1.15rem; color: var(--primary-color);">2. Adverb "<span class="grammar-hl">zài</span>" + Verb (Future Repetition):</strong>
+                    <strong style="font-size: 1.15rem; color: var(--primary-color);">1. Adverb "<span class="grammar-hl">zài</span>" + Verb (Future Repetition):</strong>
                     <div class="sentence-builder" style="margin-top: 10px;">
                         <div class="slot slot-prep">zài</div>
                         <div style="font-weight: bold; color: var(--primary-color);">+</div>
@@ -1008,11 +1127,18 @@
                         <div>• Shíyīyuè shí'èr hào wǒmen <strong>zài lái</strong> chī shòumiàn.</div>
                     </div>
                 </div>
+
+                <div class="rule-box" style="margin-top: 1rem; background-color: #FFEDD5; border-color: #FED7AA;">
+                    <strong style="color: #9A3412;">🍜 Culture Note: Longevity Noodles (shòumiàn)</strong>
+                    <p style="color: #7C2D12; margin-top: 6px; font-size: 1.05rem;">
+                        Eating long noodles on birthdays is a traditional Chinese custom representing long life ("longevity").
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- TEXT 2 -->
-        <section id="nav-7" class="tab-content">
+        <section id="nav-8" class="tab-content">
             <div class="content-header">
                 <h2>Text 2: Celebrating Birthdays (Pg 134–135)</h2>
             </div>
@@ -1072,9 +1198,13 @@
         </section>
 
         <!-- WRAP-UP & HOMEWORK -->
-        <section id="nav-8" class="tab-content">
+        <section id="nav-9" class="tab-content">
             <div class="content-header">
                 <h2>Wrap-up & Homework</h2>
+            </div>
+
+            <div class="click-hint">
+                🖱️ Interactive Mode: Click on any sentence below to reveal its English translation!
             </div>
             
             <div class="card">
@@ -1082,37 +1212,45 @@
                     <span>Lesson 9 Key Sentences</span>
                     <span class="page-badge">Pg 137</span>
                 </div>
-                <div class="dlg-turn">
-                    <strong>1. Míngtiān shàngwǔ nǐ yǒu méiyǒu kè?</strong>
-                    <span class="translation">(Do you have class tomorrow morning?)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">1. Míngtiān shàngwǔ nǐ yǒu méiyǒu kè?</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(Do you have class tomorrow morning?)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>2. Xīngqīrì shì jǐ hào?</strong>
-                    <span class="translation">(What date is Sunday?)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">2. Xīngqīrì shì jǐ hào?</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(What date is Sunday?)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>3. Tā jīnnián duō dà?</strong>
-                    <span class="translation">(How old is he this year?)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">3. Tā jīnnián duō dà?</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(How old is he this year?)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>4. Tā yī jiǔ bā èr nián shíyuè èrshíqī rì chūshēng.</strong>
-                    <span class="translation">(He was born on October 27, 1982.)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">4. Tā yī jiǔ bā èr nián shíyuè èrshíqī rì chūshēng.</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(He was born on October 27, 1982.)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>5. Tā jīnnián èrshí suì.</strong>
-                    <span class="translation">(He is twenty years old this year.)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">5. Tā jīnnián èrshí suì.</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(He is twenty years old this year.)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>6. Wǒ mǎi yí ge dà dàngāo, hǎo ma?</strong>
-                    <span class="translation">(I buy a big cake, okay?)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">6. Wǒ mǎi yí ge dà dàngāo, hǎo ma?</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(I buy a big cake, okay?)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>7. Zhù nǐ shēngri kuàilè!</strong>
-                    <span class="translation">(Wish you a happy birthday!)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">7. Zhù nǐ shēngri kuàilè!</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(Wish you a happy birthday!)</div>
                 </div>
-                <div class="dlg-turn">
-                    <strong>8. Wǒ hěn xǐhuan chī kǎoyā.</strong>
-                    <span class="translation">(I love to eat roast duck.)</span>
+
+                <div class="interactive-dlg" onclick="this.classList.toggle('revealed')">
+                    <div class="dlg-py" style="display:block; margin-top:0; padding-top:0; border-top:none;">8. Wǒ hěn xǐhuan chī kǎoyā.</div>
+                    <div class="dlg-eng" style="margin-top:8px;">(I love to eat roast duck.)</div>
                 </div>
             </div>
 
@@ -1127,7 +1265,7 @@
                 <div class="card-title">🗣️ Speaking Assignments: Padlet Video Recording</div>
                 <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1.2rem;">Please record short videos for both speaking tasks on our Padlet platform:</p>
 
-                <div class="rule-box" style="margin-bottom: 1.2rem; background-color: #FFF5F7;">
+                <div class="rule-box" style="margin-bottom: 1.2rem; background-color: #FFF7ED;">
                     <strong style="font-size: 1.2rem; color: var(--primary-color);">Task 1: Birth Year, Age, Zodiac & Origin</strong>
                     <ul style="margin: 10px 0 12px 24px; font-family: var(--pinyin-font); font-size: 1.15rem; color: var(--primary-color);">
                         <li>Nǐ nǎ nián chūshēng? <span class="translation">(Which year were you born?)</span></li>
@@ -1138,7 +1276,7 @@
                     <a href="https://padlet.com/zixianyzx/what-year-were-you-born-how-old-are-you-this-year-what-is-yo-h72l9dc9uenf885j" target="_blank" class="padlet-btn">🔗 Padlet Task 1 Submission Link</a>
                 </div>
 
-                <div class="rule-box" style="background-color: #FFF5F7;">
+                <div class="rule-box" style="background-color: #FFF7ED;">
                     <strong style="font-size: 1.2rem; color: var(--primary-color);">Task 2: Birthday Date & Cake Preference</strong>
                     <ul style="margin: 10px 0 12px 24px; font-family: var(--pinyin-font); font-size: 1.15rem; color: var(--primary-color);">
                         <li>Nǐ de shēngri shì nǎ tiān? <span class="translation">(When is your birthday?)</span></li>
